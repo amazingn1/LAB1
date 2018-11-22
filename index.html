@@ -65,7 +65,7 @@
                 <li class="active"><a href="#" data-nav-section="home">Home</a></li>
                 <li><a href="#" data-nav-section="1">1</a></li>
                 <li><a href="#" data-nav-section="2">2</a></li>
-                <li><a href="#" data-nav-section="3">3</a></li>
+                <li><a href="#" data-nav-section="Graph">Graph</a></li>
                 <li><a href="#" data-nav-section="4">4</a></li>
                 <li><a href="#" data-nav-section="5">5</a></li>
               </ul>
@@ -101,10 +101,56 @@
                 </div>
               </section>
               <!--3-->
-              <section class="colorlib-skills" data-section="3">
+              <section class="colorlib-skills" data-section="Graph">
                 <div class="colorlib-narrow-content">
                   <div class="row">
-                    <!--เพื่มเนื้อหา-->
+                    <h1>กราฟน้ำหนักของน้องพูลโต</h1>
+                    <div id="chart_div3" ></div>  
+                                        
+                                         
+                                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
+                                <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                                <script type="text/javascript">
+                                google.load("visualization", "1", {packages:["corechart"]});
+                                google.setOnLoadCallback(drawChart);
+                                function drawChart() {
+                                    // สร้างตัวแปร array เก็บค่า ข้อมูล
+                                    var dataArray1=[
+                                      ['เดือน', 'น้ำหนัก : Kg'],
+                                      ['1',  1.2],
+                                      ['2',  1.7],
+                                      ['3',  3.8],
+                                      ['4',  5.46],
+                                      ['5',  8.85],
+                                      ['6',  9.25],
+                                      ['7',  10.25],
+                                      ['8',  12.5],
+                                      ['9',  14.85],
+                                      ['10',  15.54], 
+                                      ['11',  18.56],
+                                      ['12',  20.25],   
+                                    ];
+                                         
+                                    // แปลงข้อมูลจาก array สำหรับใช้ในการสร้าง กราฟ
+                                    var data = google.visualization.arrayToDataTable(dataArray1);
+                                 
+                                    // ตั้งค่าต่างๆ ของกราฟ
+                                    var options = { 
+                                        title: "อายุของพูลโต 1 ปี",
+                                        hAxis: {title: 'เดือน', titleTextStyle: {color: 'red'}},
+                                        vAxis: {title: 'น้ำหนัก : Kg', titleTextStyle: {color: 'blue'}},
+                                        height: '300',
+                                        bar: {groupWidth: "50%"},
+                                        legend: { position: 'right', maxLines: 3 },
+                                        tooltip: { trigger: 'select' }
+                                    };
+                                 
+                                    // สร้างกราฟแนวตั้ง แสดงใน div id = chart_div
+                                    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+                                    chart.draw(data, options); // สร้างกราฟ
+                                     
+                                }
+                                </script>     
                   </div>
                 </section>
                 <!--4-->
